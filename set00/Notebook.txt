@@ -1,0 +1,7 @@
+Date  Who   Start   Stop   Interruptions   Question   TimeOnTask     Comments
+9/17  MG    09:00   13:01    10              1-10      180          Solving 10 questions according to design recipe
+================================commiting to git : 9/18 12:00========================
+9/18  MG    12:00   12:10                     10       10
+ 
+Total Time On Task Q1 (minutes)                180
+TOTQ1 (hours and tenths)                       3.0
