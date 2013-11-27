@@ -1,0 +1,46 @@
+#box{
+float:right;
+border: 1px solid blue;
+width:60%;
+height:70%;
+margin:1px auto;
+text-align:left;
+background-image:url(21.jpg);*/
+
+}
+#box h1{
+text-align:center;
+font: bold 35px Tahoma;
+}
+#box  h2{
+font: bold 30px Tahoma;
+display:inline;
+}
+#box span{ 
+font:bold 80px Tahoma;
+color:green;
+}
+
+#box1{
+float:left;
+border: 1px solid red;
+width:30%;
+height:40%;
+margin:1px auto;
+text-align:left;
+background-color:yellow;
+}
+#id{
+text-align:left;
+color:red;
+font: bold 30px Tahoma;
+}
+.redbox{
+font: bold 35px Tahoma;
+float :left;
+color: green; 
+background: pink;
+ }
+
+
+

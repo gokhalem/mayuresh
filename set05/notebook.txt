@@ -1,0 +1,5 @@
+Date     Who     Start    Stop    Interruptions   Question   TimeOnTask        Comments
+
+10/19   MG SRD   12:15   15:15       10                          170          Reading slides and doing guided practice.
+
+================================committing to git : 10/19 15:21========================================================
