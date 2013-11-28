@@ -215,7 +215,7 @@ if(xmlhttp.readyState==4 && xmlhttp.status==200)
 {
 	document.getElementById("captcha").innerHTML=xmlhttp.responseText;
 	var captcha=xmlhttp.responseText;
-	
+	alert(captcha);
 	if (captcha=='success')
 	{
 	}

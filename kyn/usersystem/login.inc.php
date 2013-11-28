@@ -172,10 +172,11 @@ $flat_no = mysql_result($query_run, 0,'flatno');
 $lname = mysql_result($query_run, 0,'lname');
 $password=mysql_result($query_run, 0,'password');
 $lastlogin=mysql_result($query_run, 0,'lastlogin');
+$avatar=mysql_result($query_run, 0,'avatar');
 $_SESSION['flatno']=$flat_no;
 $_SESSION['lname']= $lname;
 $_SESSION['lastlogin']=$lastlogin;
-
+$_SESSION['avatar']=$avatar;
 // CREATE THEIR SESSIONS AND COOKIES
 	$http_client= $_SERVER['HTTP_CLIENT_IP'];
 $http_fwd= $_SERVER['HTTP_X_FORWARDED_FOR'];

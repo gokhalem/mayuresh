@@ -1,14 +1,11 @@
 <?php
 ?>
 
-<html>
-<head>
-</head>
-<body>
 
-</html>
 <?php
 ini_set('display_errors', 1);
+include('header.php');
+
 include_once("core.inc.php");
 require 'check_login.inc.php';
 if(isset($_SESSION['flatno']) && !empty($_SESSION['flatno'])){
@@ -23,7 +20,7 @@ echo "<big>WELCOME  </big>".$_SESSION['lname']."!!!!";
 echo "you last logged in at ";
 $flatno=$_SESSION['flatno'];
 $lstlogin=$_SESSION['lastlogin'];
-
+echo "avatar".$avatar=$_SESSION['avatar'];
 echo $lstlogin;
 
 echo "YOUR APARTMENT NUMBER".$_SESSION['flatno'];
@@ -43,13 +40,24 @@ $isOwner = "no";
 
 if($flatno == $log_id ){
 	$isOwner = "yes";
+	?>
 	
+	<a href="profile.php">UPDATE YOUR PROFILE</a>
+	<a href="album.php">ADD PHOTOS</a>
+	<a href="carpool.php">Offer Car pool</a>
+	<a href="admin/inventory.php">Trash To Treasure</a>
+	<a href="logout.php?logout=1">LOGOUT</a>
+	<?php
 }
 // Fetch the user row from the query above
 
+	
 ?>
 </br>
-<a href="logout.php?logout=1">LOGOUT</a>
+<a href="profilesee.php">SEE PROFILE</a>
+	<a href="getpool.php">GET A CAR POOL</a>
+</br>
+
 </body>
 <?php
 }
@@ -59,4 +67,5 @@ include 'login.inc.php';?>
 <?php
 
 }
+include('footer.php');
 ?>

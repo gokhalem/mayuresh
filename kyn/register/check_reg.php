@@ -59,7 +59,9 @@ $sql1=mysql_query("Select * from user where flatno='$flat'");
 
 if(mysql_num_fields($sql1)==10)
 if (!file_exists("user/$lname1")) {
-			mkdir("user/$lname1", 0755);
+mkdir("user/$lname1", 0755);
+			mkdir("user/$lname1/myprofile", 0755);
+			mkdir("user/$lname1/gallery",0755);
 			echo "SUCCESSFULLY REGISTERED";
 		}
 

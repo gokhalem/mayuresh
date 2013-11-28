@@ -326,13 +326,14 @@ float: right;
 
 padding: 20px;
 width: 400px;
-height: 200px;
+height: 250px;
 }
 #pagination{
 border:1px solid black;
 font: 12px solid black;
 margin: 0px 400px ;
 }
+
 </style>
 	</head>
 	<body> 
@@ -422,6 +423,16 @@ $j=$row['availabel'];
 	 Reason to Discard:<?php echo "$g";?></br>
 	Description:<?php echo "$h";?></br>
 	Available:<?php echo "$j";?></br>
+	<form id="shop" action="scart.php" method="get">
+
+	
+
+<input type="hidden" name="pid" id="pid" value='<?php echo "$a";?>'>
+<img src="../../commonimages/small.png"/>
+	 <input type="submit" value="Add to Cart">
+	 
+	</form>
+	
 	 <hr>
 
   </div>
