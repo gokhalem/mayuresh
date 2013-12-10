@@ -423,11 +423,12 @@ $j=$row['availabel'];
 	 Reason to Discard:<?php echo "$g";?></br>
 	Description:<?php echo "$h";?></br>
 	Available:<?php echo "$j";?></br>
-	<form id="shop" action="scart.php" method="get">
+	<form id="shop" action="scart.php" method="post">
 
 	
 
 <input type="hidden" name="pid" id="pid" value='<?php echo "$a";?>'>
+<input type="hidden" name="OpFlag" id="OpFlag" value="A">
 <img src="../../commonimages/small.png"/>
 	 <input type="submit" value="Add to Cart">
 	 
@@ -514,11 +515,7 @@ $c=$row['infoimg'];
 	
 	
 	
-	?>
-	
 
-
-<?php
 }
 /*
 

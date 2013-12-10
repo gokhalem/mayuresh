@@ -28,7 +28,8 @@ echo mysql_error();
          
 if($numrows == 1){
 
-$sql="UPDATE profile SET country='$country', ayf='$ayf',intrests='$intrest', nok=$nok, contactno=$cn,em='$em',prof='$prof',lprof='$lprof', oprof='$oprof',gk='$gk',uk='$uk',hb='$hobby' WHERE flatno='$flatno'";
+$sql2="UPDATE profile SET country='$country', ayf='$ayf',intrests='$intrest', nok='$nok', contactno='$cn',em='$em',prof='$prof',lprof='$lprof', oprof='$oprof',gk='$gk',uk='$uk',hb='$hobby' WHERE flatno='$flatno'";
+$userquery1=mysql_query($sql2,$con);
 if(mysql_error()){
 echo mysql_error();
 }else{
@@ -45,11 +46,11 @@ $_SESSION['gk']=$gk;
 $_SESSION['uk']=$uk;
 $_SESSION['hb']=$hobby;
 
-	header("location: profilesee.php");
+	header("location: profilesee.php?flatno=$flatno");
 }}else{
 
-$sql="INSERT INTO profile VALUES('$flatno','$country','$ayf','$intrest',$nok,$cn,'$em','$prof','$lprof','$oprof','$gk','$uk','$hobby')";
-mysql_query($sql,$con);
+$sql3="INSERT INTO profile VALUES('$flatno','$country','$ayf','$intrest',$nok,$cn,'$em','$prof','$lprof','$oprof','$gk','$uk','$hobby')";
+mysql_query($sql3,$con);
 if(mysql_error()){
 echo mysql_error();
 }else{
@@ -65,7 +66,7 @@ $_SESSION['oprof']=$oprof;
 $_SESSION['gk']=$gk;
 $_SESSION['uk']=$uk;
 $_SESSION['hb']=$hobby;
-header("location: profilesee.php");}
+header("location: profilesee.php?flatno=$flatno");}
 
 
 

@@ -1,10 +1,10 @@
 
 <?php
 session_start();
-$flat=$_POST['flat'];
-$lname1=$_POST['lname1'];
- $email=$_POST['email'];
-  $password=$_POST['password'];
+echo $flat=$_POST['flat'];
+echo $lname1=$_POST['lname1'];
+ echo $email=$_POST['email'];
+ echo  $password=$_POST['password'];
  ?>
  <html lang="en">
   <head>
@@ -42,9 +42,11 @@ mysql_select_db('kyn',$con);
 
 
 
-$sql="INSERT INTO user VALUES('$flat','$lname1','$email','$password',null,'$ip',now(),now(),now(),0)";
+$sql="INSERT INTO user VALUES('$flat','$lname1','$email','$password',null,'$ip',now(),now(),now(),0,null)";
 mysql_query($sql,$con);
-if(mysql_error()){?>
+if(mysql_error()){
+echo mysql_error();?>
+
  <div class="col-lg-4">
  <div class="alert alert-dismissable alert-danger" id="tog">
               <button type="button" class="close" onclick="javascript:toggle_visibility1() "data-dismiss="alert">&times;</button>
@@ -57,7 +59,7 @@ if(mysql_error()){?>
 {
 $sql1=mysql_query("Select * from user where flatno='$flat'");
 
-if(mysql_num_fields($sql1)==10)
+if(mysql_num_fields($sql1)==11)
 if (!file_exists("user/$lname1")) {
 mkdir("user/$lname1", 0755);
 			mkdir("user/$lname1/myprofile", 0755);

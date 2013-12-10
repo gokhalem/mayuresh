@@ -2,7 +2,7 @@
 include_once("core.inc.php");
 include("check_login.inc.php");
 
-$gallery=$_REQUEST['gallery'];
+echo $gallery=$_REQUEST['gallery'];
  $desc=$_REQUEST['desc'];
  $lname= $_SESSION['lname'];
  $flatno=$_SESSION['flatno'];
@@ -55,15 +55,16 @@ $moveResult = move_uploaded_file($fileTmpLoc, "../register/user/$lname/$gallery/
 	if ($gallery=="myprofile"){
 	$a=1;
 	}else{
-	$a=0;
+	if ($gallery=="gallery"){
+	$a=0;}
 	}
-	$sql = "INSERT INTO gallery(flatno, uploaddate, infoimg,image,gallery) VALUES ('$flatno','$my','$desc','$db_file_name','$a')";
+	$sql = "INSERT INTO gallery(flatno, uploaddate, infoimg,image,gallery1) VALUES ('$flatno','$my','$desc','$db_file_name','$a')";
 	$query = mysql_query( $sql,$con);
 	if(mysql_error()){
 	echo mysql_error();
 	}else{
 	
-	header("location: album.php");
+	header("location: album.php?flatno=$flatno &page=1");
 }}}
 else{
 

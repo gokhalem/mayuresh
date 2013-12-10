@@ -5,7 +5,7 @@ $flatno=$_SESSION['flatno'];
 $lname=$_SESSION['lname'];
 $mydate=getdate(date("U"));
 
-$my="$mydate[mon]/$mydate[mday]/$mydate[year]";
+ $my="$mydate[mon]/$mydate[mday]/$mydate[year]";
  $captcha=$_REQUEST['captcha'];
 
 
@@ -17,8 +17,11 @@ $my="$mydate[mon]/$mydate[mday]/$mydate[year]";
 
 
 
-if($captcha > $my){
-echo 0;
+if( strtotime($captcha)>strtotime($my) ){
+echo "ok";
 }
-else{echo 1;}
+else{
+echo "nok";
+}
+
 ?>

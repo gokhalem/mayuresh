@@ -1,11 +1,29 @@
 <?php
 include_once("core.inc.php");
+include_once("header.php");
+
 require 'check_login.inc.php';
 if(isset($_SESSION['flatno']) && !empty($_SESSION['flatno'])){
 $flatno =$_SESSION['flatno'];
 $lname=$_SESSION['lname'];
-$avatar=$_SESSION['avatar'];
-echo "<big>WELCOME  </big>".$_SESSION['lname']."!!!!";
+$sql="SELECT * FROM user WHERE flatno='$flatno'";
+$query=mysql_query($sql,$con);
+
+
+while($row = mysql_fetch_array($query, MYSQL_ASSOC))
+{
+
+ $avatar=$row['avatar'];
+ }
+
+
+  
+
+
+
+
+
+echo "<h3><big>WELCOME  </big>".$_SESSION['lname']."!!!!</h3>";
 $isOwner = "no";
 
 
@@ -33,6 +51,18 @@ if($flatno == $log_id ){
 }
 #box1:hover a {
    display: block;
+}
+#h1{
+float:left;
+width:1024px;
+}
+#box1{
+float:left;
+width:200px;
+}
+#h{
+float:right;
+width:774px;
 }
 </style>
 <script type="text/javascript">
@@ -72,6 +102,7 @@ function toggle2(){
 </script>
 </head>
 <body>
+<div id="h1">
 <div id="box1">
 
 <?php
@@ -89,8 +120,8 @@ function toggle2(){
 <?php
 }
 else{
- $avatar=$_SESSION['avatar'];
- $profile_pic=$_SESSION['profile'];
+
+
 
   ?>
   <img title="Change Profile Photo" src= '<?php echo "../register/user/$lname/myprofile/$avatar" ?>' id="img-id" onclick="javascript:toggle1()"  style= "display:block"alt="pic">
@@ -104,6 +135,146 @@ else{
 
 ?>
 </div>
+<div id="h">
+<div class="bs-docs-section">
+        <div class="row">
+          <div class="col-lg-10">
+            <div class="page-header">
+              <h1 id="forms">UPDATE YOUR PROFILE</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-14">
+            <div class="well">
+              <form class="bs-example form-horizontal" action="updateprofile.php" method="GET">
+                <fieldset>
+                  <legend>Update Profile</legend>
+		
+				  
+				   <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">WHERE ARE YOU FROM?:</label>
+                    <div class="col-lg-8">
+                      <input type="text" class="form-control"id="country" name="country"  placeholder ="Country"/>
+
+                    </div>
+                  </div>
+				  
+				  <div class="form-group">
+                    <label for="textArea" class="col-lg-4 control-label">ABOUT YOUR FAMILY:</label>
+                    <div class="col-lg-8">
+                      <textarea class="form-control" id="ayf" name="ayf"rows="3" placeholder="TELL US ABOUT YOUR FAMILY"></textarea>
+             
+                    </div>
+					
+					
+					
+                  </div>
+				  
+				  
+                
+
+				  
+				  
+				  <div class="form-group">
+                    <label for="textArea" class="col-lg-4 control-label"> INTERESTS:</label>
+                    <div class="col-lg-8">
+                      <textarea class="form-control" id="intrests" name="intrests"rows="3" placeholder="Your Passion"></textarea>
+             
+                    </div>
+					
+					
+					
+                  </div>
+                
+				
+				  
+				  <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">NUMBER OF KIDS:</label>
+                    <div class="col-lg-8">
+                      <input type="text" id="nok" name="nok"  placeholder ="Number of kids in your family"/>
+
+                    </div>
+                  </div>
+				  
+              	  
+					  <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">CONTACT NUMBER:</label>
+                    <div class="col-lg-8">
+                         <input type="text" id="cn"name="cn" placeholder ="CONTACT NUMBER"/>
+				 </div>
+                  </div>
+			
+	
+					  <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">EMAIL::</label>
+                    <div class="col-lg-8">
+                         <input type="email" id="em" name="em" placeholder ="You can Email me at?"/>
+				 </div>
+                  </div>
+  
+   <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">YOUR PROFESSION::</label>
+                    <div class="col-lg-8">
+                          <input type="text" id="prof" name="prof"  placeholder ="What do you do?"/>
+				 </div>
+                  </div>
+				  
+				  
+   <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">YOUR LOVED ONES PROFESSION::</label>
+                    <div class="col-lg-8">
+                       <input type="text" id="lprof" name="lprof" placeholder ="partner's profession"/>
+				 </div>
+                  </div>
+  <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">PROFESSION OF OTHERS IN FAMILY::</label>
+                    <div class="col-lg-8">
+                       <input type="text" id="oprof" name="oprof" placeholder ="Profession of your parents for eg"/>
+				 </div>
+                  </div>
+				  
+   <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">IN WHICH GRADE IS YOUR KID?::</label>
+                    <div class="col-lg-8">
+                       <input type="text" id="gk" name="gk" placeholder ="Grade of your kid"/>
+				 </div>
+                  </div>
+				  
+      <div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">SCHOOL/UNIVERSITY OF KID::</label>
+                    <div class="col-lg-8">
+                        <input type="text" id="uk"name="uk"  placeholder ="Name of school/university"/>
+				 </div>
+                  </div>
+ 
+
+<div class="form-group">
+                    <label for="inputEmail" class="col-lg-4 control-label">HOBBIES::</label>
+                    <div class="col-lg-8">
+                        <input type="text" id="hb" name="hb" placeholder ="Hobby"/>
+				 </div>
+                  </div>
+   <br /><br />
+					 
+					 
+					 
+					 <div class="form-group">
+					 
+					<div class="col-sm-offset-4 col-sm-15">
+     <button type="submit" name="login" id="submit"   class="btn btn-default">UPDATE YOUR PROFILE</button>
+    </div>
+  </div>
+ 
+  
+                    
+                  </div>
+				  </div>
+				  </div>
+				  </div>
+				  </div>
+				 </div>
 
 
 
@@ -111,38 +282,31 @@ else{
 
 
 
-
-
-<form action="updateprofile.php" method="GET">
+<form >
 
 
 
 
 </br></br></br>
-WHICH PART OF WORLD ARE YOU FROM?:<input type="text" id="country" name="country"  placeholder ="Country"/></br>
-ABOUT YOUR FAMILY:<input type="text" id="ayf" name="ayf"
-cols="40" rows="5" style="width:200px; height:50px;" 
-name="Text1" id="Text1" value="" placeholder="In few words about your family"></br>
-INTRESTS:
-<input type="text" id="intrests" name="intrests"
-cols="40" rows="5" style="width:200px; height:50px;" 
- value="" placeholder="Your passion"></br>
- NUMBER OF KIDS::<input type="text" id="nok" name="nok"  placeholder ="Number of kids in your family"/></br>
- CONTACT NUMBER:<input type="text" id="cn"name="cn" placeholder ="CONTACT NUMBER"/></br>
- EMAIL::<input type="email" id="em" name="em" placeholder ="You can Email me at?"/></br>
- YOUR PROFESSION::<input type="text" id="prof" name="prof"  placeholder ="What do you do?"/></br>
+</br>
+ 
 
- YOUR LOVED ONES PROFESSION::<input type="text" id="lprof" name="lprof" placeholder ="partner's profession"/></br>
-
- PROFESSION OF OTHERS IN FAMILY::<input type="text" id="oprof" name="oprof" placeholder ="Profession of your parents for eg"/></br>
-
- IN WHICH GRADE IS YOUR KID?::<input type="text" id="gk" name="gk" placeholder ="Grade of your kid"/></br>
-
- SCHOOL/UNIVERSITY OF KID::<input type="text" id="uk"name="uk"  placeholder ="Name of school/university"/></br>
 
  
- HOBBIES::<input type="text" id="hb" name="hb" placeholder ="Hobby"/></br></br>
-<button type="submit" name="login" id="submit"   class="btn btn-default">UPDATE YOUR PROFILE</button>
+ 
+ 
+
+
+ 
+
+
+
+ 
+
+</br>
+
+ 
+
 </form>
 
 

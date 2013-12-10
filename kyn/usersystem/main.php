@@ -43,20 +43,28 @@ if($flatno == $log_id ){
 	?>
 	
 	<a href="profile.php">UPDATE YOUR PROFILE</a>
-	<a href="album.php">ADD PHOTOS</a>
+	<a href="album.php?flatno=<?php echo "$flatno"?>& page=1">ADD PHOTOS</a>
 	<a href="carpool.php">Offer Car pool</a>
 	<a href="admin/inventory.php">Trash To Treasure</a>
 	<a href="logout.php?logout=1">LOGOUT</a>
+	<a href="getpool.php">GET A CAR POOL</a>
+	<a href="chat.php?flatno=<?php echo "$flatno"?>">CHAT ROOM</a>
+	<a href="profilesee.php?flatno=<?php echo "$flatno"?>">MY PROFILE</a>	
+	
+	<a href="peek.php">Peek into ur NEIGHBOURS</a>
+	
+	
 	<?php
 }
 // Fetch the user row from the query above
 
 	
 ?>
-</br>
-<a href="profilesee.php">SEE PROFILE</a>
-	<a href="getpool.php">GET A CAR POOL</a>
-</br>
+
+
+
+
+
 
 </body>
 <?php

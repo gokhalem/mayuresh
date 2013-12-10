@@ -8,7 +8,7 @@ $flatno=$_SESSION['flatno'];
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-	 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+         <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="../css/ui-lightness/jquery-ui-1.10.3.custom.css">
 <script type="text/javascript" src="../javascript/jquery.js"></script>
 <script type="text/javascript" src="../javascript/jquery-ui.js"></script>
@@ -108,35 +108,37 @@ xmlhttp.onreadystatechange=function()
 if(xmlhttp.readyState==4 && xmlhttp.status==200)
 {
 
-	var captcha=xmlhttp.responseText;
-
-	if (captcha==0)
-	{
-	document.getElementById("mydiv3").innerHTML="";
-	}
-	else{
-	document.getElementById("mydiv3").innerHTML="YOU CANNOT SET CARPOOL FOR CURRENT DAY or days passed by";
-	document.getElementById('submit1').style.display = 'none';
+        var captcha=xmlhttp.responseText;
+alert(captcha);
+var captcha1="ok";
+        if (captcha == captcha1)
+        {
+		alert("here");
+        document.getElementById("mydiv3").innerHTML="";
+        }
+        else{
+        document.getElementById("mydiv3").innerHTML="YOU CANNOT SET CARPOOL FOR CURRENT DAY or days passed by";
+        document.getElementById('submit1').style.display = 'none';
 }}
 }
 xmlhttp.open("GET","checkdate.php?captcha="+captcha1,true);
 xmlhttp.send();
 
 
-}	
+}        
 function enter(){
 
 var xmlhttp=init();
-var req=document.getElementById("req").value;
-
+var req=document.getElementById("req1").value;
+alert(req);
 xmlhttp.onreadystatechange=function()
 {
 if(xmlhttp.readyState==4 && xmlhttp.status==200)
 {
 
-	document.getElementById("me").innerHTML=xmlhttp.responseText;
+        document.getElementById("me").innerHTML=xmlhttp.responseText;
 
-	
+        
 }
 }
 
@@ -144,7 +146,7 @@ xmlhttp.open("GET","cpool.php?req="+req,true);
 xmlhttp.send();
 
 
-}	
+}        
 function update(){
 
 var xmlhttp=init();
@@ -155,9 +157,9 @@ xmlhttp.onreadystatechange=function()
 if(xmlhttp.readyState==4 && xmlhttp.status==200)
 {
 
-	document.getElementById("mee").innerHTML=xmlhttp.responseText;
+        document.getElementById("mee").innerHTML=xmlhttp.responseText;
 
-	
+        
 }
 }
 
@@ -165,13 +167,13 @@ xmlhttp.open("GET","upool.php?req="+req+"&&seat="+seat,true);
 xmlhttp.send();
 
 
-}	
+}        
  
 </script>
 </head>
 <body>
 
-</br>	
+</br>        
 <div id="ref">
 <form action="carpool.php" method="GET">
 DATE OF YOUR TRIP:<input type="text" id="date" name="date"  size="8"required/></BR><div id="mydiv3"></div>
@@ -229,12 +231,12 @@ echo "Your registration number for carpool on ".$date." is:".$ro;
 </div>
 
   <div class="bs-docs-section">
-	<div id="ref1">
+        <div id="ref1">
         <div class="row">
-		
-          <div class="col-lg-6">
+                
+          <div class="col-lg-8">
             <div class="page-header">
-	
+        
               <h1 id="tables">Carpools offered by you</h1>
             </div>
 
@@ -246,13 +248,13 @@ echo "Your registration number for carpool on ".$date." is:".$ro;
                     <th>DATE</th>
                     <th>TIME</th>
                     <th>LOCATION</th>
-					<th>SEATSLEFT</th>
+                                        <th>SEATSLEFT</th>
                   </tr>
                 </thead>
                 <tbody>
-					<?php
-				
-		$sql3="SELECT * from carpool WHERE flatno='$flatno'";
+                                        <?php
+                                
+                $sql3="SELECT * from carpool WHERE flatno='$flatno' ORDER BY regno DESC";
 $queryy=mysql_query($sql3,$con);
 if(mysql_error()){
 echo mysql_error();
@@ -260,64 +262,64 @@ echo mysql_error();
 if(mysql_num_rows($queryy)==0){
 echo "**YOU HAVE NO CAR POOLS ON OFFER";
 }
-$row = mysql_fetch_array($queryy, MYSQL_ASSOC);
+
 
 
 while($row = mysql_fetch_array($queryy, MYSQL_ASSOC))
 {
 $a= $row['regno'] ;
-$b=$row['date'];
+ $b=$row['date'];
 $c=$row['time'];
 $d=$row['location'];
 $e=$row['cap'];
 $mydate=getdate(date("U"));
 
-$my="$mydate[mon]/$mydate[mday]/$mydate[year]";
-if($my==$b   ){
+ $my="$mydate[mon]/$mydate[mday]/$mydate[year]";
+if( strtotime($my)== strtotime($b)){
 ?>
 
 
-		
-		
+                
+                
                   <tr class="warning">
                     <td><?php echo "$a";?></td>
                     <td><?php echo "$b";?></td>
                     <td><?php echo "$c";?></td>
                     <td><?php echo "$d";?></td>
-					<td><?php echo "$e";?></td>
+                                        <td><?php echo "$e";?></td>
                   </tr>
                 <?php 
-				}
-				else if($my < $b){ ?>
-				<tr class="success">
+                                }
+                                else if(strtotime($my) < strtotime($b)){ ?>
+                                <tr class="success">
                     <td><?php echo "$a";?></td>
                     <td><?php echo "$b";?></td>
                     <td><?php echo "$c";?></td>
                     <td><?php echo "$d";?></td>
-					<td><?php echo "$e";?></td>
+                                        <td><?php echo "$e";?></td>
                   </tr>
-				
-				
-			<?php	}else{?>
-			
+                                
+                                
+                        <?php        }else if(strtotime($my) > strtotime($b)){?>
+                        
 
  <tr class="active">
                     <td><?php echo "$a";?></td>
                     <td><?php echo "$b";?></td>
                     <td><?php echo "$c";?></td>
                     <td><?php echo "$d";?></td>
-					<td><?php echo "$e";?></td>
+                                        <td><?php echo "$e";?></td>
                   </tr>
 
 
-			
-			
-			<?php }}}?> 
+                        
+                        
+                        <?php }}}?> 
                 </tbody>
               </table>
             </div><!-- /example -->
           </div>
-		  <div class="col-lg-4" >
+                  <div class="col-lg-4" >
 
             <h2>Car Pool Options</h2>
             <div class="bs-example">
@@ -326,49 +328,49 @@ if($my==$b   ){
               <ul class="nav nav-tabs" style="margin-bottom: 15px; ">
                 <li class="active"><a href="#home" data-toggle="tab">UPDATE</a></li>
                 <li><a href="#delete" data-toggle="tab">DELETE</a></li>
-				
-				 </ul>
+                                
+                                 </ul>
             </div>
-			</div>
-			<div id="myTabContent" class="tab-content" id="mytab">
-			<div class="tab-pane fade active in" id="home">
-			 <h3> UPDATE SEATS</h3></br>
-			 <div class="form-group">
+                        </div>
+                        <div id="myTabContent" class="tab-content" id="mytab">
+                        <div class="tab-pane fade active in" id="home">
+                         <h3> UPDATE SEATS</h3></br>
+                         <div class="form-group">
                   <label class="control-label" for="inputSmall">Number of Seats left in vehicle</label>
                   <input class="form-control input-sm" id="seats"type="text" placeholder="number of seats left" id="inputSmall">
                 </div>
-			 <div class="input-group">
-			
+                         <div class="input-group">
+                        
                     <span class="input-group-addon">REQNO:</span>
                     <input type="text" id="req"class="form-control" placeholder="Enter the request number">
                     <span class="input-group-btn">
                       <button class="btn btn-default" onclick="javascript:update()"type="button">UPDATE</button>
                     </span>
                   </div>
-				  	<div id="mee"></div>
-					</div>
-					<div class="tab-pane fade" id="delete" >
-				   <h3> DELETE REQUEST</h3></br>
-				  
-				   <div class="input-group">
-			
+                                          <div id="mee"></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="delete" >
+                                   <h3> DELETE REQUEST</h3></br>
+                                  
+                                   <div class="input-group">
+                        
                     <span class="input-group-addon">REQNO:</span>
-                    <input type="text" id="req" name="req" class="form-control"  placeholder="Enter the request number">
+                    <input type="text" id="req1" name="req" class="form-control"  placeholder="Enter the request number">
                     <span class="input-group-btn">
                       <button class="btn btn-default" name="del" onclick="javascript:enter()" type="submit">DELETE</button>
                     </span>
-					
+                                        
                   </div>
-			<div id="me"></div>
-			</div>
-			</div>
-			</div>
+                        <div id="me"></div>
+                        </div>
+                        </div>
+                        </div>
 
-			
-			
-		
-			
-		  <div class="col-lg-7">
+                        
+                        
+                
+                        
+                  <div class="col-lg-7">
     
             
        
@@ -379,7 +381,7 @@ if($my==$b   ){
               <p class="text-warning"></p>
              <h4> <p class="text-warning">**Indicates today you are supposed to offer car pool</p></h4>
              <h4> <p class="text-success">**Indicates you are all set for car-pool</p></h4>
-			  <h4><p class="text-primary"><h4>**Indicates your past car-pool offers</p></h4>
+                          <h4><p class="text-primary"><h4>**Indicates your past car-pool offers</p></h4>
               <p class="text-info"></p>
             </div>
             
@@ -392,7 +394,7 @@ if($my==$b   ){
 </body>
 </html>
 
-		
+                
 
 
 
