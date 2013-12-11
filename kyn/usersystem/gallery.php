@@ -6,6 +6,7 @@ $flatno=$_REQUEST['flatno'];
 ?>
 <html>
 	<head>
+	<link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
 	<script type="text/javascript" src="../javascript/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../javascript/swfobject.js"></script>
 <!--[if lt IE 9]>
@@ -15,11 +16,12 @@ $flatno=$_REQUEST['flatno'];
 <script type="text/javascript" src="../javascript/lightview/lightview.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../css/lightview/lightview.css" />
-
-
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+ <link rel="stylesheet" type="text/css" href="../css/footerforpeek.css" />
 	<style type="text/css">
-form#photo_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;margin:20px ;float:center; color:black;}
+form#photo_form{background:#28C4DA; border:#AFD80E 1px solid;border-radius:25px;s padding:20px;margin:20px ;float:center; color:black;}
 div#galleries{}
 div#galleries > div{float:left; margin:20px; text-align:center; cursor:pointer; color:black;}
 div#galleries > div > div {height:100px; overflow:hidden;}
@@ -53,13 +55,20 @@ margin: 0px 400px ;
 }
 
 		#div_chat{	overflow: auto; 
-height: 50px; 
-width: 500px; 
+height: 70px; 
+width: 400px; 
 
-background-color: #CCCCCC; 
+background-color: #28C4DA; 
 border: 1px solid #555555;
+border-radius: 6px;
 				}
-				
+				#hey{
+				border: 1px solid #28C4DA;
+				background:white;
+				}
+				#pagination1{
+margin: 0px 400px ;
+}
 				
 </style>
 <script type="text/javascript">
@@ -77,7 +86,30 @@ xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 }
 return xmlhttp;
 }
-       
+  function delete1(id){
+
+var c=id;
+var res1 = c.replace(/d-/,"");
+
+var xmlhttp=init();
+
+
+
+xmlhttp.onreadystatechange=function()
+{
+if(xmlhttp.readyState==4 && xmlhttp.status==200)
+{
+    var a=xmlhttp.responseText;
+    alert(a);  
+location.reload();	    
+}
+}
+
+xmlhttp.open("GET","deletephoto.php?res1="+res1,true);
+xmlhttp.send();
+
+
+}     
      
 function comment(id){
 
@@ -97,6 +129,7 @@ if(xmlhttp.readyState==4 && xmlhttp.status==200)
         var response=xmlhttp.responseText;
 if(response){
 document.getElementById("c-"+res).value="";
+location.reload();	
 }
         
 }
@@ -110,6 +143,16 @@ xmlhttp.send();
 </script>
 	</head>
 	<body>
+	<div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
 <?php
 $sql2="SELECT * FROM user where flatno=$flatno";
 $query3=mysql_query($sql2,$con);
@@ -140,22 +183,29 @@ if(mysql_error()){
 	 
 	$sql=$sql1="SELECT * FROM gallery where flatno='$flatno' AND gallery1= '0' LIMIT $start,$per_page";
 	$query=mysql_query($sql,$con);?>
-	<a href="album.php?flatno=<?php echo "$flatno"?>& page=1">VIEW OUR PROFILE PICS</a>
-		<div id="pagination">
-		<?php
-	for ($i=1;$i<=$pages ;$i++){?>
-
-	 <a  href="?flatno=<?php echo "$flatno"?>&page=<?php echo "$i";?>"><?php echo "$i";?></a>
+	<button type="button" class="btn btn-primary"><a href="album.php?flatno=<?php echo "$flatno"?>& page=1"> Our Profile Pics</a></button>
+			<ul id="pagination1" class="pagination">
+                
+       <?php       
+	for ($i=1;$i<=$pages ;$i++){
+	if($i==$page){
+	?>
+  <li class="active">
+  <?php  }else{   ?>
+	 <li>  <?php  }   ?>
+	 <a  href="?flatno=<?php echo "$flatno"?>&page=<?php echo "$i";?>"><?php echo "  $i  ";?></a></li>
 	
 	<?php
-	}?>
-	</div>
+	}
+	?>
+	</ul>
 <?php
 	if(mysql_error()){
 	echo mysql_error();
 	}else{
 	if(mysql_num_rows($query) >=1){
 	?>
+	<div id="hey">
 	<div id='page'>
 
 
@@ -167,8 +217,11 @@ if(mysql_error()){
 <p>My Picture Gallery</p>
 
 	<?php
+	$i=0;
 	while($row = mysql_fetch_array($query, MYSQL_ASSOC))
 {
+$num=mysql_num_rows($query);
+ $i+=1;
 $a= $row['image'] ;
 $b=$row['uploaddate'];
 $c=$row['infoimg'];
@@ -182,7 +235,20 @@ $c=$row['infoimg'];
      data-lightview-title='<?php echo "$c";?>'
      data-lightview-caption='<?php echo "$b";?>'>
     <img src='<?php echo "../register/user/$lname/gallery/$a";?>'alt=''/>
-  </a>
+	
+  </a><?php
+  $isOwner = "no";
+if($flatno == $log_id){
+$flatno=$_SESSION['flatno'];
+$lname=$_SESSION['lname'];
+	$isOwner = "yes";?>
+	  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                     
+                      <button type="submit" id="d-<?php echo "$a";?>" onclick="javascript:delete1(this.id)"class="btn btn-primary">Delete</button> 
+                    </div>
+                  </div>
+	<?php }?>
   <hr>
 </div>
 <div id="b">
@@ -218,12 +284,23 @@ if(mysql_error()){
 	 <input type="submit" id="d-<?php echo "$a";?>" onclick="javascript:comment(this.id)" value="COMMENT">
 	<div id="mydiv"></div>
 	
-	
+	<?php
+	if($i==$num){
+?>
+<p>
+</br>
+</br>
+</br>
+</br>
+</br>
+</p>
+<?php } ?>
    
 <hr>
 </div>
 
 </div>
+
 	<!--<div id="galleries">  <img src=<?php echo "../register/user/$lname/gallery/$a";?> width = "150px" height="150px"/></div>-->
 	   <?php
 } 
@@ -232,7 +309,22 @@ if(mysql_error()){
 	</div>
 </div>
 
+	</div>
+	<div id="footer" style="margin-top:200px">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="main.php"></a></li>
+                       		  
+                
 	
+                        <li class="right"><a href="logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
+ 
+     
+ 
+        </div>
 	
 	<?php
 

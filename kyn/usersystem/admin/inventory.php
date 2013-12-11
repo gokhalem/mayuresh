@@ -2,7 +2,8 @@
 include_once("core.inc.php");
 include("check_login.inc.php");
 // Make sure the _GET "u" is set, and sanitize it
-
+$flatno= $_SESSION['flatno'];
+$lname2=$_SESSION['lname'];
 if(isset($_SESSION['id'])){
 	$id=$_SESSION['id'];
 	
@@ -19,6 +20,7 @@ if($id == $log_id){
 	$mydate=getdate(date("U"));
  $my="$mydate[year]-$mydate[mon]-$mydate[mday]";
  ?>
+ 
 	<html>
 	<head>
 	<script type="text/javascript" src="../../javascript/jquery-1.10.2.min.js"></script>
@@ -284,8 +286,22 @@ $c=$row['infoimg'];
 }*/
 
 	} else {?>
-  <html>
-	<head>
+	<!DOCTYPE html>
+<html>
+<head>
+<title> Know Your Neighbours</title>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+	
+
+
+
+
+<link rel="icon" type="image/gif" href="../../commonimages/kyn.gif">
+ <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
+ <link rel="stylesheet" type="text/css" href="../../css/headlogo.css" />
+ <link rel="stylesheet" type="text/css" href="../../css/footerforpeek.css" />
 	<script type="text/javascript" src="../../javascript/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../../javascript/swfobject.js"></script>
 <!--[if lt IE 9]>
@@ -299,9 +315,8 @@ $c=$row['infoimg'];
 
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 	<style type="text/css">
-form#product{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;margin:20px ;float:center; color:black;}
-form#del{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;margin:20px ;float:center; color:black;}
-form#search{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;margin:20px ;float:center; color:black;}
+
+form#search{background:#28C4DA; border:#AFD80E 1px solid;border-radius:25px; padding:40px;margin:20px ;float:center; color:black;}
 div#galleries{}
 div#galleries > div{float:left; margin:20px; text-align:center; cursor:pointer; color:black;}
 div#galleries > div > div {height:100px; overflow:hidden;}
@@ -333,13 +348,40 @@ border:1px solid black;
 font: 12px solid black;
 margin: 0px 400px ;
 }
-
+#pagination1{
+margin: 0px 400px ;
+}
+#hey{
+				border: 1px solid #28C4DA;
+				background:white;
+				height:40px;
+				width:1250px;
+				
+				}
 </style>
 	</head>
 	<body> 
+	<div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
+			  
+			  <h1 style="margin-left:350px;">WELCOME <?php echo "$lname2"?> family! Happy Shopping!!</h1>
 <form id="search" action="search.php" method="get">
-	PRODUCT-ID:<input type="text" name="pid" id="pid" placeholder="id of product to be SEARCHED"></br>
-	 <p><input type="submit" value="SEARCH"></p>
+	<b>PRODUCT-ID:</b><input type="text" name="pid" id="pid" placeholder="id of product to be SEARCHED"></br>
+
+	   <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-0">
+                  
+                      <button type="submit" class="btn  btn-default">SEARCH</button> 
+                    </div>
+                  </div>
 	</form>
 	
 	<?php
@@ -358,21 +400,32 @@ margin: 0px 400px ;
 	 
 	$sql=$sql1="SELECT * FROM products WHERE availabel='yes' LIMIT $start,$per_page";
 	$query=mysql_query($sql,$con);?>
-		<div id="pagination">
-		<?php
-	for ($i=1;$i<=$pages ;$i++){?>
-
-	 <a  href="?page=<?php echo "$i";?>"><?php echo "$i";?></a>
+	<div id="hey">
+	<h1 style="font:20px solid black; color:black; margin-left:350px;">
+	Happy Shopping!!
+	</h1>
+	</div>
+		<ul id="pagination1" class="pagination">
+                
+       <?php       
+	for ($i=1;$i<=$pages ;$i++){
+	if($i==$page){
+	?>
+  <li class="active">
+  <?php  }else{   ?>
+	 <li>  <?php  }   ?>
+	 <a  href="?flatno=<?php echo "$flatno"?>&page=<?php echo "$i";?>"><?php echo "  $i  ";?></a></li>
 	
 	<?php
-	}?>
-	</div>
+	}
+	?>
+	</ul>
 	<?php
 	if(mysql_error()){
 	echo mysql_error();
 	}else{
 	if(mysql_num_rows($query) >=1){
-	
+	$k=0;
 	?>
 	 
 	<div id='page'>
@@ -385,8 +438,11 @@ margin: 0px 400px ;
  <hr>
 
 	<?php
+	
 	while($row = mysql_fetch_array($query, MYSQL_ASSOC))
 {
+ $num=mysql_num_rows($query);
+ $k=$k+1;
  $a=$row['productid'];
  $b= $row['date'] ;
 $c=$row['owner'];
@@ -423,9 +479,7 @@ $j=$row['availabel'];
 	 Reason to Discard:<?php echo "$g";?></br>
 	Description:<?php echo "$h";?></br>
 	Available:<?php echo "$j";?></br>
-	<form id="shop" action="scart.php" method="post">
-
-	
+	<form id="shop" action="scart.php" method="get">
 
 <input type="hidden" name="pid" id="pid" value='<?php echo "$a";?>'>
 <input type="hidden" name="OpFlag" id="OpFlag" value="A">
@@ -434,7 +488,18 @@ $j=$row['availabel'];
 	 
 	</form>
 	
-	 <hr>
+		<?php
+	if($k==$num){
+?>
+<p>
+</br>
+</br>
+</br>
+</br>
+</br>
+</p>
+<?php } ?>
+	
 
   </div>
 
@@ -449,7 +514,21 @@ $j=$row['availabel'];
 ?>
 	</div>
 </div>
+	<div id="footer" style="margin-top:200px">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="../main.php"></a></li>
+                       		  
+                
 	
+                        <li class="right"><a href="../logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
+ 
+     
+ 
+        </div>
 	
 	<?php
 

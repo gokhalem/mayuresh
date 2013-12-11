@@ -5,20 +5,35 @@ include_once("check_login.inc.php");
 $flatno=$_REQUEST['flatno'];
 
 ?>
-<!Doctype html>
-<html lang="en">
-	<head>
+<!DOCTYPE html>
+<html>
+<head>
+<title> Know Your Neighbours</title>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+	
+
+
+
+ <link rel="stylesheet" type="text/css" href="../css/bootstrap1.css" />
+<link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
+
+ <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
+ <link rel="stylesheet" type="text/css" href="../css/footerforpeek.css" />
+	
 	
                 <style>
 			#div_chat{	overflow: auto; 
 height: 300px; 
 width: 500px; 
-
-background-color: #CCCCCC; 
+border-radius:10px;
+background-color: #28C4DA; 
 border: 1px solid #555555;
+color:black;
 				}
 			#page{
-			margin: 50px 200px;}	
+			margin: 10px 200px;}	
 				</style>
 				<script type="text/javascript">
 				function init(){
@@ -84,16 +99,26 @@ setInterval(uchal,1000);
 		
 	</head>
 
-	<body>
-		
-	<div id="page">
-			<h2>
+	<body style="margin: 0px;">
+		 <div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
+			  	<h1 style="margin-left:200px">
 	
-	KNOW YOUR NEIGHBOURS: CHAT ROOM</h2>
-	<h4><p>Better a good neighbour than a distant friend.</p>
+	KNOW YOUR NEIGHBOURS: CHAT ROOM</h1>
+	<div id="page">
+		
+	<h2><p>Better a good neighbour than a distant friend.</p>
 	    Enjoy the fact that you guys are neighbours!!
 		KEEP CHATTING!!
-	</h4>
+	</h2>
 	
 		<div id="div_chat" class="chat_main" >
 	
@@ -134,6 +159,20 @@ echo "[".$a."]"."--".$b."says ---".$c."<br />";
 			<div id="mydiv"></div>
 		</div>
 </div>
+<p style="margin-bottom:150px">
+
+<p>
+<div id="footer" style="margin-top:200px">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="main.php"></a></li>
+                       		  
+                
+	
+                        <li class="right"><a href="logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
 <?PHP
 
 

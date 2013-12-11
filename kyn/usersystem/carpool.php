@@ -2,7 +2,8 @@
 include_once("core.inc.php");
 include_once("check_login.inc.php");
 if($_SESSION['flatno']== $log_id){
-$flatno=$_SESSION['flatno'];
+ $flatno=$_SESSION['flatno'];
+  $lnamei=$_SESSION['lname'];
 ?>
 <html>
 <head>
@@ -13,18 +14,32 @@ $flatno=$_SESSION['flatno'];
 <script type="text/javascript" src="../javascript/jquery.js"></script>
 <script type="text/javascript" src="../javascript/jquery-ui.js"></script>
 <script type="text/javascript" src="../javascript/boot.js"></script>
+<link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
+
+ <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
+ <link rel="stylesheet" type="text/css" href="../css/footerforpeek.css" />
+	
 <style>
 #ref{
-border:1px solid black;
+border:2px solid #28C4DA;;
 margin:10px 100px;
-padding:100px;
+padding:10px;
+border-radius:10px;
 }
 #ref1{
-border:1px solid black;
-margin:100px 150px;
+border:2px solid #28C4DA;
+border-radius:10px;
+margin:100px 100px;
 padding:0px;
 align:center;
 }
+#hey{
+				border: 1px solid #28C4DA;
+				background:white;
+				height:40px;
+				width:1250px;
+				
+				}
 </style>
 <script type="text/javascript">
   $(document).ready(function(){
@@ -172,19 +187,90 @@ xmlhttp.send();
 </script>
 </head>
 <body>
+ <div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
+</br>  
 
-</br>        
+<h2 style="margin-left:200px;"> Awesome <?php echo "$lnamei"?> family !!, you are taking eco-friendly option!!<h2>
+<div id="hey"></div>      
 <div id="ref">
-<form action="carpool.php" method="GET">
-DATE OF YOUR TRIP:<input type="text" id="date" name="date"  size="8"required/></BR><div id="mydiv3"></div>
-</BR></BR>
-LOCATION:<input type="text" id="loc" name="loc" required  placeholder="where you are going?" onblur="javascript:checkinput()"/><div id="mydiv"></div></BR></BR>
-TIME:<input type="time" id="time" name="time"required /></BR></BR>
-SEATS AVAILABLE:<input type="text" id="cap" name="cap" required placeholder="no of seats you offer" onblur="javascript:checkinputa()"/><div id="mydiv1"></div></BR></BR>
-<p><input type="submit" id="submit1" value="POST" onmouseover="javascript:validate()" /></p>
-<div id="div4"></div>
-</form>
+<form >
 
+
+
+
+
+</form>
+    <div class="bs-docs-section">
+  <div class="row">
+  <img src="../commonimages/carpool.jpg" height="300px" width="400px" style="float:right;padding:20px;"align="left"/>
+          <div class="col-lg-6">
+            <div class="well">
+              <form class="bs-example form-horizontal" action="carpool.php" method="GET">
+                <fieldset>
+                  <legend>Offer Car Pool</legend>
+                  <div class="form-group">
+				 
+                    <label for="inputEmail" class="col-lg-2 control-label"> Date: </label>
+                    <div class="col-lg-10">
+                      <input type="text"id="date" name="date"  class="form-control"  placeholder="Date Of Your Trip" required/>
+					  <div id="mydiv3"></div>
+                    </div>
+                  </div>
+              
+   <div class="form-group">
+				 
+                    <label for="inputEmail" class="col-lg-2 control-label">Location:</label>
+                    <div class="col-lg-10">
+            <input type="text" class="form-control" id="loc" name="loc" required  placeholder="where you are going?" onblur="javascript:checkinput()"/>
+					  <div id="mydiv"></div>
+                    </div>
+                  </div>
+            	    <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label"> Time:</label>
+                    <div class="col-lg-10">
+            <input type="time" class="form-control" id="time" name="time"required /> 
+					 
+                    </div>
+                  </div>
+							  
+             <div class="form-group">
+				 
+                    <label for="inputEmail" class="col-lg-2 control-label">Seats:</label>
+                    <div class="col-lg-10">
+<input type="text" class="form-control" id="cap" name="cap" required placeholder="no of seats you offer" onblur="javascript:checkinputa()"/>
+					  <div id="mydiv1"></div>
+                    </div>
+                  </div>
+           
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <input class="btn btn-default" type="submit" id="submit1" value="POST" onmouseover="javascript:validate()" />
+<div id="div4"></div> 
+                    </div>
+                  </div>
+  
+                
+				
+				
+				
+				
+				
+				</fieldset>
+              </form>
+            </div>
+          </div>
+         
+        </div>
+		</div>
 <?php
 if(isset ($_REQUEST['date'])){
 $flatno=$_SESSION['flatno'];
@@ -389,7 +475,17 @@ if( strtotime($my)== strtotime($b)){
         </div>
       </div>
 </div>
-
+<div id="footer" style="margin-top:200px">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="main.php"></a></li>
+                       		  
+                
+	
+                        <li class="right"><a href="logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
 
 </body>
 </html>

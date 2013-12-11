@@ -6,7 +6,7 @@ html {
   overflow: -moz-scrollbars-vertical !important;
   overflow-y: scroll;
 }
-body {   color: black; -webkit-font-smoothing: antialiased;}
+body {   color: white; -webkit-font-smoothing: antialiased;}
 p { margin-bottom: 18px; }
 a { color: black; text-decoration: none; outline-style: none; }
 a:hover { text-decoration: underline; }

@@ -23,7 +23,7 @@ while($row = mysql_fetch_array($query, MYSQL_ASSOC))
 
 
 
-echo "<h3><big>WELCOME  </big>".$_SESSION['lname']."!!!!</h3>";
+
 $isOwner = "no";
 
 
@@ -33,6 +33,10 @@ if($flatno == $log_id ){
 <html>
 <head>
 
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+ <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
+ <link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
+  <link rel="stylesheet" type="text/css" href="../css/footer1.css" />
 <style type="text/css">
 #box1{border:#999 2px solid; width:200px; height:200px;}
 #box1 > img{position:absolute; z-index:2000; width:200px; max-height:200px;}
@@ -102,7 +106,18 @@ function toggle2(){
 </script>
 </head>
 <body>
+<div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
 <div id="h1">
+<h3>Welcome- <?php echo "$lname";?>!!</h3>
 <div id="box1">
 
 <?php
@@ -266,7 +281,7 @@ else{
      <button type="submit" name="login" id="submit"   class="btn btn-default">UPDATE YOUR PROFILE</button>
     </div>
   </div>
- 
+ </form>
   
                     
                   </div>
@@ -282,33 +297,21 @@ else{
 
 
 
-<form >
-
-
-
-
-</br></br></br>
-</br>
+ <div id="footer">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="main.php"></a></li>
+                       		  
+                
+	
+                        <li class="right"><a href="logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
  
-
-
+     
  
- 
- 
-
-
- 
-
-
-
- 
-
-</br>
-
- 
-
-</form>
-
+        </div>
 
 
 

@@ -1,9 +1,11 @@
+<?php
+ini_set('display_errors', 1);
+
+
+include_once("core.inc.php");
+require 'check_login.inc.php';
+?>
 <!DOCTYPE html>
-
-
-
-
-
 
 
 
@@ -12,21 +14,12 @@
     <title> Know Your Neighbours</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+	<link rel="icon" type="image/gif" href="../../commonimages/kyn.gif">
   <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/headlogo.css" />
+ 
   
   <script type="text/javascript">
-
-
-   
-         
-        
-
-      
-
-
-
-
-
 
         
         
@@ -93,9 +86,25 @@ if (apt == "") {
             
 
             </script>
-  
+			
   </head>
   <body>
+  <div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                  <ul class="nav navbar-nav navbar-right">
+				  <li><a href="../../face.html">Home</a></li>
+                    <li><a href="#">Admin-Login</a></li>
+                    <li><a href="../main.php">Members-Login</a></li>
+					
+					
+                  </ul>
+                </div><!-- /.nav-collapse -->
+              </div><!-- /.navbar -->
 
 	   <div class="bs-docs-section">
         <div class="row">
@@ -105,9 +114,10 @@ if (apt == "") {
             </div>
           </div>
         </div>
+		
 
         <div class="row">
-          <div class="col-lg-5">
+          <div class="col-lg-5" style="margin-left:350px;">
             <div class="well">
             <form action= "<?php echo $current_file ?>"  method="POST"class="bs-example form-horizontal"  >
                 <fieldset>
@@ -137,15 +147,15 @@ if (apt == "") {
 					 
 					<div class="col-sm-offset-0 col-sm-12">
       <button type="submit" name="login" id="submit"   class="btn btn-default">LOGIN</button>
-    
+    </div>
+	</div>
  <div class="bs-example">
              
             <div class="alert alert-dismissable alert-info" id="toggle">
               <button type="button" id="btn1" class="close" onclick="javascript:toggle_visibility()" data-dismiss="alert">&times;</button>
               <strong>Please Note  ::</strong>only admin can login here
-            
-	</div>
-  </div>
+       </div>
+
   
   <?php
   if (isset($_POST['aptno']) && isset($_POST['password'])){
@@ -219,17 +229,22 @@ else{?>
 
 
                     
-                  </div>
-				  </div>
-				  </div>
-				  </div>
+                  
 				 
                  
 
- 
+ </form>	   
+	</div>
+	
+	</div>
+	</div>
+	</div>
+	</div>
 
 
-        </form>
+      <footer id="footer">
+copyright @KnowYourNeighbors 2013-2014
+</footer>
     </body>
 </html>
  <?php

@@ -1,6 +1,5 @@
-*{
-margin:0px;
-padding:0px;
+body {
+     
 }
 h1{
 font: bold 20px Tahoma;
@@ -8,93 +7,60 @@ font: bold 20px Tahoma;
 }
 h2{
 font: bold 14px Tahoma;
-
 }
-header,section,footer,nav,aside,article{
-display:block;
+header, section, footer, aside, nav, article, hgroup{
+display: block;
+
 }
 body{
-text-align:center;
-
+width:100%;
+display:-webkit-box;/*tells body to hold felxible boxes*/
+-webkit-box-pack: center;/*centers website*/
 }
-#big{
-width:1000px;
+#newdiv{
+max-width:1000px;/*standardizes*/
+margin: 20px 0px;
+display:-webkit-box;
+-webkit-box-orient:vertical;
+-webkit-box-flex:1;/*helps to adjust size of site dynamiically 1=flexible*/
 
-border-radius:25px;
-margin:20px auto;
-text-align:left;
+
 }
 #top{
-padding:75px;
-border:1px solid black;
-background-color:yellow;
+background: yellow;
+border:3px solid black;
+padding:20px;
 }
-#navbar{
-
+#menu{
+border:red;
+background:blue;
+color:white;
 }
-#navbar li{
+#menu li{
 display:inline-block;
 list-style:none;
 padding:5px;
+font: bold 14px Tahoma;
 }
-#navbar li a:link, #navbar li a:visited { text-decoration: none}
-#navbar li a:hover,#navbar li a:active {text-decoration: none}
-#section{
-float:right;
-width:660px;
-margin:30px;
+#newdiv{
+display:-webkit-box;
+-webkit-box-orient:horizontal;
 
 }
-#box1{
-float: left;
-width:215px;
- height:200px; 
-margin:29px;
-padding:20px 0px;
-
-text-align:center;
+#main{
+border: 1px solid blue;
+-webkit-box-flex:1;
+margin: 20px;
+padding:20px;
 }
-
-article{
-padding:40px;
-
-background:#5A975A;
-margin-bottom:15px;
-
+#aside{
+border:1px solid red;
+//*if v have 2 flexible things in box..browser gets confused over priority*//
+width:220px;
+margin:20px 0px;
+padding:30px;
+background:#66CCCC;
 }
-article footer{
-text-align: right;
-}
-
-#box1 > img{position:absolute; z-index:2000; width:255px; max-height:650px;}
-#box1 > a {
-	display: none;
-	position:absolute;
-	margin:90px 0px 0px 120px; /* margin:top right btm left; */
-	z-index:3000;
-	background: #F0F0F0;
-	border:#666 1px solid;
-	border-radius:3px;
-	padding:5px;
-	font-size:12px;
-	text-decoration:none;
-	color:#333;
-}
-#box1:hover a {
-
-   display: block;
-}
-#out{
-
-margin:0px 100px;
-border:1px solid black;
-}
-#in{
-
-height:100px;
-width:500px;
-
-border:1px solid black;}
 
 #footer{
         position: fixed; /* the footer must stick to the bottom of the page, the fixed positionning is here necessary. */

@@ -8,6 +8,10 @@ $flatno=$_SESSION['flatno'];
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+	<link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
+
+ <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
+ <link rel="stylesheet" type="text/css" href="../css/footerforpeek.css" />
 	 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="../css/ui-lightness/jquery-ui-1.10.3.custom.css">
 <script type="text/javascript" src="../javascript/jquery.js"></script>
@@ -20,11 +24,19 @@ margin:10px 100px;
 padding:100px;
 }
 #ref1{
-border:1px solid black;
-margin:100px 150px;
-padding:0px;
+border:2px solid #28C4DA;
+margin:15px 150px;
+border-radius:25px;
+padding:10px;
 align:center;
 }
+#hey{
+				border: 1px solid #28C4DA;
+				background:white;
+				height:40px;
+				width:1250px;
+				
+				}
 </style>
 <script type = "text/javascript">
  $(document).ready(function(){
@@ -107,6 +119,23 @@ xmlhttp.send();
 	
 </script>
 <body>
+ <div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+               
+                </div><!-- /.nav-collapse -->
+              </div>
+			  <div id="ht">
+		
+			  <h2 style="margin-left:390px;">SEARCH FOR CAR POOL</h2></div>
+			  <div id="hey">
+			  </div>
+			  	 <img src="../commonimages/pool.jpg" height="100px"align="left"/>
+				  <img src="../commonimages/cpool.jpg" height="100px" style="float:right;"align="left"/>
   <div class="bs-docs-section">
 	<div id="ref1">
         <div class="row">
@@ -114,7 +143,7 @@ xmlhttp.send();
           <div class="col-lg-10">
             <div class="page-header">
 	
-              <h1 id="tables">SEARCH FOR CAR POOL</h1>
+              <h2 id="tables"></h2>
             </div>
 			
 <h2></h2>
@@ -306,7 +335,7 @@ $e=$row['cap'];
 		 <div class="tab-pane fade" id="map" >
 		 <h3>SEE WHERE YOUR NEIGHBOUR IS GOING</h3></br>
 				  
-				   <div class="input-group">
+				   <div class="input-group" style="width:450px;">
 				   <span class="input-group-addon">REQUESTNO:</span>
                     <input type="text" name="loc"id="req"class="form-control" placeholder="Enter the Requestno">
                     
@@ -330,11 +359,11 @@ $e=$row['cap'];
 	<div class="tab-pane fade" id="book" >
 	 <h2>BOOK YOUR SEAT</h2>
 	
-	<div class="form-group">
-                  <label class="control-label" for="inputSmall">Number of Seats you want in vehicle</label>
+	<div class="form-group"style="width:450px;">
+                  <label  class="control-label" for="inputSmall">Number of Seats you want in vehicle:</label>
                   <input class="form-control input-sm" id="seats"type="text" placeholder="number of seats" id="inputSmall">
                 </div>
-			 <div class="input-group">
+			 <div class="input-group" style="width:450px;">
 			
                     <span class="input-group-addon">REQNO:</span>
                     <input type="text" id="req1"class="form-control" placeholder="Enter the request number">
@@ -350,7 +379,21 @@ $e=$row['cap'];
 			</div>
 		  </div>
 		  </div>
-		  
+		<p style="margin-bottom:150px">
+
+<p>
+<div id="footer" style="margin-top:200px">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="main.php"></a></li>
+                       		  
+                
+	
+                        <li class="right"><a href="logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
+               
 		  
 		  <?php
 		  }

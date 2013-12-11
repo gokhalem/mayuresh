@@ -28,7 +28,7 @@ $id=$row['msgid'];
 $datetime=$row['datetime'];
 $lname=$row['lname'];
  $msg=$row['msg'];
- $temp = '<lname>'.$lname ."-says  :".'</lname>'.
+ $temp = '<lname>'.'<strong>'.$lname. '<strong>'."-says  :".'</lname>'.
 			'<msg>'.$msg   .'</msg>'.'<br />';
  $response.=$temp;
 }

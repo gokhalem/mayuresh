@@ -14,22 +14,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-  
+  <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
+  <link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
+ 
   <script type="text/javascript">
 
-
-   
-         
-        
-
-      
-
-
-
-
-
-
-        
         
 
 function vapt(){
@@ -97,7 +86,22 @@ if (apt == "") {
   
   </head>
   <body>
-
+<div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                  <ul class="nav navbar-nav navbar-right">
+				  <li><a href="../face.html">Home</a></li>
+                    <li><a href="admin/admin_login.php">Admin-Login</a></li>
+                    <li><a href="#">Members-Login</a></li>
+					
+					
+                  </ul>
+                </div><!-- /.nav-collapse -->
+              </div>
 	   <div class="bs-docs-section">
         <div class="row">
           <div class="col-lg-12">
@@ -108,7 +112,7 @@ if (apt == "") {
         </div>
 
         <div class="row">
-          <div class="col-lg-5">
+          <div class="col-lg-5" style="margin-left:350px;">
             <div class="well">
             <form action= "<?php echo $current_file ?>"  method="POST"class="bs-example form-horizontal"  >
                 <fieldset>
@@ -147,7 +151,13 @@ if (apt == "") {
             
 	</div>
   </div>
-  
+  </div>
+  </div>
+  </div>
+  </div>
+  <footer id="footer">
+copyright @KnowYourNeighbors 2013-2014
+</footer>
   <?php
   if (isset($_POST['aptno']) && isset($_POST['password'])){
 $flat= htmlentities($_POST['aptno']);

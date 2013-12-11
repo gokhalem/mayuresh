@@ -10,11 +10,23 @@ $flatno= $_REQUEST['flatno'];
  <title>Welcome to Know Your Neighbours</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+<link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-
+ <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
+ 
 <link rel="stylesheet" href="../css/main1.css"><!--Q1-Imported the file main1.css for styling-->
 </head>
 <body>
+<div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
 <div id="big">
 
 <nav id="navbar">
@@ -152,19 +164,25 @@ $flatno=$row['flatno'];
     </article>
 
 </section>
-<footer id="footer">
-<p>Copyright knowurneighbours.com</p>
-<footer>
+
 
 </div>
-<div id="new">
-<div id="k">
+ <div id="footer">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="main.php"></a></li>
+                       		  
+                
+	
+                        <li class="right"><a href="logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
+ 
+     
+ 
+        </div>
 
-</div>
-<div id="p">
-
-</div>
-</div>
 
 </body>
 </html>

@@ -12,6 +12,9 @@ if(mysql_error()){
 	?>
 	<html>
 	<head>
+	<link rel="icon" type="image/gif" href="../../commonimages/kyn.gif">
+ <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
+ <link rel="stylesheet" type="text/css" href="../../css/headlogo.css" />
 	<style type="text/css">
 	#baap{
 
@@ -32,7 +35,16 @@ height: 200px;
 </style>
 	</head>
 	<body>
-
+<div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
 <?php 	echo "<big> INVENTORY </big>"."</br>";?>
 	<h1>PRODUCTS</h1>
  <hr>
@@ -64,7 +76,7 @@ $j=$row['availabel'];
      data-lightview-group='example'
      data-lightview-title=  <?php echo "Product-id:"."$a"?>
      data-lightview-caption='<?php echo "$h";?>'>
-    <img src='<?php echo "../../register/admin/products/$i";?>'alt=''/>
+    <img src='<?php echo "../../register/admin/products/$i";?>'style="height:450px; width:550px;"alt=''/>
 	  <hr>
 	  Click me to see
   </a>

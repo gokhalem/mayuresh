@@ -1,19 +1,15 @@
 <?php
 include_once("core.inc.php");
 include("check_login.inc.php");
-include("header.php");
-// Make sure the _GET "u" is set, and sanitize it
- $lname1=$_SESSION['lname'];
-echo "<h3>This page belongs to APTNO  :</h3>".$flatno=$_REQUEST['flatno'];
-
-// Check to see if the viewer is the account owner
-$isOwner = "no";
-if($flatno == $log_id){
-$flatno=$_SESSION['flatno'];
-$lname=$_SESSION['lname'];
-	$isOwner = "yes";?>
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title> Know Your Neighbours</title>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
 	
-<!--	<link rel="stylesheet" type="text/css" href="css/style.css" />-->
 	<script type="text/javascript" src="../javascript/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../javascript/swfobject.js"></script>
 <!--[if lt IE 9]>
@@ -21,10 +17,11 @@ $lname=$_SESSION['lname'];
 <![endif]-->
 <script type="text/javascript" src="../javascript/spinners/spinners.min.js"></script>
 <script type="text/javascript" src="../javascript/lightview/lightview.js"></script>
+<link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
+ <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+ <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
 
 <!--<link rel="stylesheet" type="text/css" href="../css/lightview/lightview.css" />-->
-
-
 
 	<style type="text/css">
 form#photo_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;margin:20px ;float:center; color:black;}
@@ -60,21 +57,55 @@ font: 12px solid black;
 margin: 0px 400px ;
 }
 </style>
-	</head>
-	<body>
+</head>
+<body>
+<div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
+
+
+
+
+<?php
+
+
+// Make sure the _GET "u" is set, and sanitize it
+ $lname1=$_SESSION['lname'];
+$flatno=$_REQUEST['flatno'];
+?>
+<h1>This Page Belongs to <?php echo "$flatno"?></h1>
+<?php
+
+// Check to see if the viewer is the account owner
+$isOwner = "no";
+if($flatno == $log_id){
+$flatno=$_SESSION['flatno'];
+$lname=$_SESSION['lname'];
+	$isOwner = "yes";?>
+	
+
+
+	
 	<form id="photo_form" enctype="multipart/form-data" method="post" action="uploadgallery.php">
 	  <h2>Hi <?php echo $lname ?>, add a new photo into one of your galleries</h2>
 <b>Choose Gallery:</b> 
 	  <select name="gallery" required>
 	    <option value=""></option>
-	   <option value="myprofile">PROFILE</option>
-	   <option value="gallery">GALLERY</option>
-	  </select>
-	 <b>Choose Photo:</b> 
+	   <option value="myprofile">Profile</option>
+	   <option value="gallery">Gallery</option>
+	  </select><br>
+	<b>Choose Photo:</b>
 	
 	 <input type="file" name="photo" accept="image/*" required>
 	<b> Describe the photo</b>  <input type="text" name="desc"  placeholder="describe your photo">
-	  <p><input type="submit" value="Upload Photo Now"></p>
+	 <input type="submit" value="Upload">
 	</form>
 	</head>
 	
@@ -83,7 +114,7 @@ margin: 0px 400px ;
 	}?>
 	<html>
 	<head>
-	<!--<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<script type="text/javascript" src="../javascript/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../javascript/swfobject.js"></script>
 <!--[if lt IE 9]>
@@ -93,11 +124,16 @@ margin: 0px 400px ;
 <script type="text/javascript" src="../javascript/lightview/lightview.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../css/lightview/lightview.css" />
+<link rel="stylesheet" type="text/css" href="../css/lightview/bootstrap.css" />
 
+<link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
 
+ <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
+
+<link rel="stylesheet" type="text/css" href="../css/footerforpeek.css" />
 
 	<style type="text/css">
-form#photo_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;margin:20px ;float:center; color:black;}
+form#photo_form{background:#28C4DA; border:#AFD80E 1px solid;border-radius:25px;s padding:20px;margin:20px ;float:center; color:black;}
 div#galleries{}
 div#galleries > div{float:left; margin:20px; text-align:center; cursor:pointer; color:black;}
 div#galleries > div > div {height:100px; overflow:hidden;}
@@ -129,11 +165,16 @@ margin: 0px 400px ;
 }
     
 			#div_chat{	overflow: auto; 
-height: 50px; 
-width: 500px; 
+height: 70px; 
+width: 400px; 
 
-background-color: #CCCCCC; 
+background-color: #28C4DA; 
 border: 1px solid #555555;
+border-radius:5px;
+				}
+				#hey{
+				border: 1px solid #28C4DA;
+				background:white;
 				}
 				
 				
@@ -153,7 +194,30 @@ xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 }
 return xmlhttp;
 }
-       
+    function delete1(id){
+
+var c=id;
+var res1 = c.replace(/d-/,"");
+
+var xmlhttp=init();
+
+
+
+xmlhttp.onreadystatechange=function()
+{
+if(xmlhttp.readyState==4 && xmlhttp.status==200)
+{
+var a=xmlhttp.responseText;
+    alert(a);  
+location.reload();	
+}
+}
+
+xmlhttp.open("GET","deletephoto.php?res1="+res1,true);
+xmlhttp.send();
+
+
+}     
      
 function comment(id){
 
@@ -173,6 +237,7 @@ if(xmlhttp.readyState==4 && xmlhttp.status==200)
         var response=xmlhttp.responseText;
 if(response){
 document.getElementById("c-"+res).value="";
+location.reload();	
 }
         
 }
@@ -205,7 +270,7 @@ xmlhttp.send();
 	 
 	$sql=$sql1="SELECT * FROM gallery where flatno='$flatno' AND gallery1= '1' LIMIT $start,$per_page";
 	$query=mysql_query($sql,$con);?>
-	<button type="button" class="btn btn-primary"><a href="gallery.php?flatno=<?php echo "$flatno"?>& page=1">VIEW MY GALLERY</a></button>
+	<button type="button" class="btn btn-primary"><a href="gallery.php?flatno=<?php echo "$flatno"?>& page=1"> View Gallery</a></button>
 	
 		
 		
@@ -233,10 +298,10 @@ xmlhttp.send();
 	if(mysql_num_rows($query) >=1){
 	?>
 	
-
+<div id="hey">
 <div id="page">
 
-<div class='demonstrations'>
+<div class='demonstrations' >
 <?php 	echo "<big> MYPROFILE PICS</big>"."</br>";?>
 	<h1>Picture</h1>
 <p>My Picture Gallery</p>
@@ -258,9 +323,11 @@ if(mysql_error()){
 ?>
 
 	<?php
+	$i = 0;
 	while($row = mysql_fetch_array($query, MYSQL_ASSOC))
 {
-
+ $num=mysql_num_rows($query);
+ $i+=1;
  $a= $row['image'] ;
 $b=$row['uploaddate'];
 $c=$row['infoimg'];
@@ -274,13 +341,25 @@ $c=$row['infoimg'];
      data-lightview-title='<?php echo "$c";?>'
      data-lightview-caption='<?php echo "$b";?>'>
     <img src='<?php echo "../register/user/$lname/myprofile/$a";?>'alt=''/>
-  </a>
+  </a><?php
+   $isOwner = "no";
+if($flatno == $log_id){
+$flatno=$_SESSION['flatno'];
+$lname=$_SESSION['lname'];
+	$isOwner = "yes";?>
+	  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                     
+                      <button type="submit" id="d-<?php echo "$a";?>" onclick="javascript:delete1(this.id)"class="btn btn-primary">Delete</button> 
+                    </div>
+                  </div>
+	<?php }?>
   <hr>
 </div>
 <div id="b">
 
           WHEN          :     <?php echo "$b";?></br>
-      DESCRIBE:<?php echo "$c";?></br>
+      DESCRIPTION:<?php echo "$c";?></br>
 	  <div id="div_chat">
 	<div id="d-<?php echo "$a";?>">
 	<?php
@@ -308,7 +387,17 @@ if(mysql_error()){
 	 <input type="submit" id="d-<?php echo "$a";?>" onclick="javascript:comment(this.id)" value="COMMENT">
 	<div id="mydiv"></div>
 	
-	
+	<?php
+	if($i==$num){
+?>
+<p>
+</br>
+</br>
+</br>
+</br>
+</br>
+</p>
+<?php } ?>
 	
 	 
    
@@ -316,17 +405,35 @@ if(mysql_error()){
 </div>
 
 </div>
+
+
 	<!--<div id="galleries">  <img src=<?php echo "../register/user/$lname/myprofile/$a";?> width = "150px" height="150px"/></div>-->
-	   <?php
-	   
+	   <?php  
 } 
 
 ?>
 	</div>
+	
 </div>
 
+</div>
+	</div>
+
+	<div id="footer" style="margin-top:200px">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="main.php"></a></li>
+                       		  
+                
 	
-	
+                        <li class="right"><a href="logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
+ 
+     
+ 
+        </div>
 	<?php
 
 
@@ -342,12 +449,3 @@ if(mysql_error()){
 	
 	
 	?>
-	
-
-
-<?php
-
-/*
-
-}*/
-?>

@@ -11,7 +11,12 @@ include_once("core.inc.php");
 <title> Know Your Neighbours</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+	
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
+ <link rel="icon" type="image/gif" href="../commonimages/kyn.gif">
+  <link rel="stylesheet" type="text/css" href="../css/footerforpeek.css" />
+  
   <style type="text/css">
   #hi{
  margin: 50px 120px;
@@ -43,6 +48,16 @@ background:#1ec7e6;
   
 </head>
 <body>
+<div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                 
+                </div><!-- /.nav-collapse -->
+              </div>
 <div class="page-header">
             <h2>  PEEK INTO YOUR NEIGHBORS</h2>
             </div>
@@ -100,7 +115,21 @@ background:#1ec7e6;
 </div>
 
 </aside>
-<div>
+<div id="footer">
+                <ul id="footer_menu">
+                
+                        <li class="homeButton"><a href="main.php"></a></li>
+                       		  
+                
+	
+                        <li class="right"><a href="logout.php?logout=1">Log Out</a>
+                        </li>
+                        
+                </ul>
+ 
+     
+ 
+        </div>
 
 
 

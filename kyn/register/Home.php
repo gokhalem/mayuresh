@@ -12,6 +12,7 @@ $_SESSION['secure'] = rand(1000, 9999);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+   <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
   <script type="text/javascript">
 
 
@@ -265,25 +266,43 @@ xmlhttp.send();
   
   </head>
   <body>
+ <div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
  
+                  <ul class="nav navbar-nav navbar-right">
+				  <li><a href="../face.html">Home</a></li>
+                    <li><a href="../usersystem/admin/admin_login.php">Admin-Login</a></li>
+                    <li><a href="../usersystem/main.php">Members-Login</a></li>
+					
+					
+                  </ul>
+                </div><!-- /.nav-collapse -->
+              </div>
+			  
 	   <div class="bs-docs-section">
         <div class="row">
           <div class="col-lg-12">
-            <div class="page-header">
-              <h1 id="forms">NEW USERS REGISTER</h1>
+            <div class="page-header" >
+              <h2 id="forms" style="margin-left:390px;">    NEW USERS REGISTER</h2>
             </div>
           </div>
         </div>
+		
+<div class="container"  style="margin-left:270px;"> 
 
-        <div class="row">
-          <div class="col-lg-5">
+        <div class="col-lg-10">
+          <div class="col-lg-8">
             <div class="well">
               <form class="bs-example form-horizontal"  action="check_reg.php" method="POST">
                 <fieldset>
                   <legend>Register Here</legend>
 				   <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Apartment No</label>
-                    <div class="col-lg-10"> <select class="form-control"  name="flat"  id="Aptno" >
+                    <label for="inputEmail" class="col-lg-3 control-label">Apartment No</label>
+                    <div class="col-lg-5"> <select class="form-control"  name="flat"  id="Aptno" >
   <option value="1001">1001</option>
   <option value="1002">1002</option>
   <option value="1003">1003</option>
@@ -301,8 +320,8 @@ xmlhttp.send();
                   </div>
 				  
 				   <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">LastName</label>
-                    <div class="col-lg-10">
+                    <label for="inputEmail" class="col-lg-3 control-label">LastName</label>
+                    <div class="col-lg-5">
                       
 					  <input type="text" class="form-control"   name="lname1"  placeholder="Enter your Last Name" id="lname"
 					   onblur="javascript:checkname()"  onkeyup="javascript:checkinput()"/><div id="mydiv"></div>
@@ -313,8 +332,8 @@ xmlhttp.send();
 				  
 				  
                   <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                    <div class="col-lg-10">
+                    <label for="inputEmail" class="col-lg-3 control-label">Email</label>
+                    <div class="col-lg-5">
                    
 					  <input type="email" class="form-control" name="email" placeholder="Email"
 					  id="femail" onblur="javascript:vemail()" onkeydown="javascript:checkemailinput()"/><div id="mydiv1"></div>
@@ -323,34 +342,34 @@ xmlhttp.send();
 				  
 				  
                   <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Re-Type Email</label>
-                    <div class="col-lg-10">
+                    <label for="inputEmail" class="col-lg-3 control-label">Re-Type Email</label>
+                    <div class="col-lg-5">
                    <input type="email" class="form-control" placeholder="Email"  name="temail" id="cemail1"onblur="javascript:cemail()"/><div id="mydiv2"></div>
 					 
                     </div>
                   </div>  
 				   <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Password</label>
-                    <div class="col-lg-10">
+                    <label for="inputEmail" class="col-lg-3 control-label">Password</label>
+                    <div class="col-lg-5">
                   
-					 <input type="password" class="form-control" placeholder="Password-must be more than 5 characters" name="password" id="password"onblur="javascript:vpass()" onkeydown="javascript:checkpasswordinput()"/><div id="mydiv3"></div>
+					 <input type="password" class="form-control" placeholder="Password-length more than 5 " name="password" id="password"onblur="javascript:vpass()" onkeydown="javascript:checkpasswordinput()"/><div id="mydiv3"></div>
                     </div>
                   </div>  
 				  
 				  
 				  
                   <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">Re-Type Password</label>
-                    <div class="col-lg-10">
+                    <label for="inputPassword" class="col-lg-3 control-label">Re-Type Password</label>
+                    <div class="col-lg-5">
 				
-                   <input type="password" class="form-control"placeholder="Password-must be more than 5 characters" name="tpassword" id="passwordc"onblur="javascript:cpass()"/><div id="mydiv4"></div>
+                   <input type="password" class="form-control"placeholder="Password-length more than 5 " name="tpassword" id="passwordc"onblur="javascript:cpass()"/><div id="mydiv4"></div>
                      </div>
 					 </div>
 					  
 					  
 					  <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">CAPTCHA</label>
-                    <div class="col-lg-10">
+                    <label for="inputPassword" class="col-lg-3 control-label">CAPTCHA</label>
+                    <div class="col-lg-5">
 				<img src="generate.php"/></br>
 
 </br>
@@ -401,14 +420,17 @@ xmlhttp.send();
 
 
         </form>
-    </body>
-</html>
+ 
        
      
-                 
+          </div>  
+	  
 
       
-       
+     
+      <footer id="footer">
+copyright @KnowYourNeighbors 2013-2014
+</footer>  
 
   
   </body>

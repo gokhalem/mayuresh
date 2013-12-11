@@ -1,10 +1,10 @@
 
 <?php
 session_start();
-echo $flat=$_POST['flat'];
-echo $lname1=$_POST['lname1'];
- echo $email=$_POST['email'];
- echo  $password=$_POST['password'];
+ $flat=$_POST['flat'];
+ $lname1=$_POST['lname1'];
+  $email=$_POST['email'];
+  $password=$_POST['password'];
  ?>
  <html lang="en">
   <head>
@@ -12,6 +12,7 @@ echo $lname1=$_POST['lname1'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+   <link rel="stylesheet" type="text/css" href="../css/headlogo.css" />
   <script type="text/javascript">
   
   	 function toggle_visibility1() {
@@ -24,7 +25,23 @@ echo $lname1=$_POST['lname1'];
    </script>
   </head>
   <body>
-  
+   <div id="hw">
+       
+                
+                                
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <img src="../commonimages/logo2.png" height="50px"align="left"/>
+ 
+                  <ul class="nav navbar-nav navbar-right">
+				  <li><a href="../face.html">Home</a></li>
+                    <li><a href="../usersystem/admin/admin_login.php">Admin-Login</a></li>
+                    <li><a href="../usersystem/main.php">Members-Login</a></li>
+					
+					
+                  </ul>
+                </div><!-- /.nav-collapse -->
+              </div>
+			  
  <?php
  $http_client= $_SERVER['HTTP_CLIENT_IP'];
 $http_fwd= $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -63,14 +80,24 @@ if(mysql_num_fields($sql1)==11)
 if (!file_exists("user/$lname1")) {
 mkdir("user/$lname1", 0755);
 			mkdir("user/$lname1/myprofile", 0755);
-			mkdir("user/$lname1/gallery",0755);
-			echo "SUCCESSFULLY REGISTERED";
-		}
+			mkdir("user/$lname1/gallery",0755);?>
+			<h1>Welcome <?php echo "$lname1" ?> family!!</h1>
+
+<h4> You Have SUCCESSFULLY REGISTERED On Your Apartment Number---<?php echo "$flat" ?><br>
+You Last Logged In At---<?php echo "$lstlogin" ?></h4>
+	
+	
+	
+		<?php }
 
 
 }
 mysql_close($con);
 ?>
+ <footer id="footer" style="margin-top:400px;">
+copyright @KnowYourNeighbors 2013-2014
+</footer>  
+
 </body>
 </html>
 <?php
